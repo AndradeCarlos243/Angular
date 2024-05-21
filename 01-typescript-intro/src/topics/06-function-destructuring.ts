@@ -1,7 +1,14 @@
-interface Product
+export interface Product
 {
     description: string;
     price: number;
+}
+
+export interface ShoppingCart
+{
+    products: Product[];
+    tax: number;
+    calculateTax(shoppingCart: ShoppingCart): [number, number];
 }
 
 const telefono: Product =
@@ -16,35 +23,19 @@ const tablet: Product =
     price: 500
 }
 
-interface TaxCalculationOptions
+let shoppingCart: ShoppingCart =
 {
-    tax: number;
-    products: Product[];
-}
-
-function calculateTax(options: TaxCalculationOptions): number[]
-{
-    let total = 0;
-    options.products.forEach(product =>
+    products: [telefono, tablet],
+    tax: 0.16,
+    calculateTax: function(shoppingCart: ShoppingCart): [number, number]
     {
-        total += product.price;
-    });
-
-    return [total, total * options.tax];
+        const total = shoppingCart.products.reduce((total, product) => total + product.price, 0);
+        const tax = total * shoppingCart.tax;
+        return [total, tax];
+    }
 }
 
-const shoppingCart = [telefono, tablet];
-const tax = 0.16;
+const [total, tax] = shoppingCart.calculateTax(shoppingCart);
 
-const result = calculateTax(
-    { 
-        tax: tax,
-        products: shoppingCart,
-    }
-);
-
-console.log(`Total: ${result[0]}, IVA: ${result[1]}`); // Total: 600, IVA: 96
-
-
-
-
+console.log(`Total: ${total}, IVA: ${tax}`);
+console.log(`Productos: ${shoppingCart.products.map(product => product.description).join(', ')}`)
