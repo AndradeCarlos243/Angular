@@ -1,0 +1,33 @@
+<h1>{{ nombreHeroe }}</h1>
+<dl>
+  <dt>Alter Ego</dt>
+  <dd>Peter Parker</dd>
+  <dt>Edad</dt>
+  <dd>{{ edad }}</dd>
+  <dt>Capitalizado</dt>
+  <dd>{{ capNombre }}</dd>
+  <dt>Descripción</dt>
+  <dd>{{ heroDescription }}</dd>
+</dl>
+
+<button
+  *ngIf="nombreHeroe !== 'spiderman'"
+  (click)="cambiaNombre()"
+  class="btn btn-primary me-2">
+  Cambiar nombre
+</button>
+
+<button
+  *ngIf="edad !== 24"
+  (click)="cambiaEdad()"
+  class="btn btn-primary">
+  Cambiar edad
+</button>
+
+<br>
+
+<button
+  class="btn btn-primary mt-1"
+  (click)="restaurarForm()">
+  Reiniciar formulario
+</button>
