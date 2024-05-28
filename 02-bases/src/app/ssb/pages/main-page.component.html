@@ -1,0 +1,12 @@
+<h1>SUPER SMASH BROS</h1>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <ssb-list-combatientes [listaPersonajes]="personajes"></ssb-list-combatientes>
+  </div>
+
+  <div class="col">
+    <ssb-add-combatiente (onNewCharacter)="onNewCharacter($event)"></ssb-add-combatiente>
+  </div>
+</div>

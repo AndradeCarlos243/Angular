@@ -1,0 +1,33 @@
+<h4>Lista de combatientes</h4>
+<ul class="list-group">
+  <li class="list-group-item"
+    *ngFor="
+      let combatiente of listaPersonajes;
+      index as i;
+      last as isLast;
+      first as isFirst;
+      even as isEven;
+      odd as isOdd;
+    "
+    [ngClass]="
+    {
+      'list-group-item-secondary': isLast,
+      'list-group-item-primary': isFirst,
+    }"
+  >
+    <div class="row">
+      <div class="col text-start">
+        <span class="">{{ combatiente.name }}</span>
+      </div>
+      <div class="col text-center">
+        <span class="badge bg-secondary">
+        {{ combatiente.franchise }}</span>
+      </div>
+      <div class="col text-end">
+        <button class="btn btn-danger" (click)="deleteCharacter(i)" title="Eliminar {{ combatiente.name }}">
+          <i class="fa-regular fa-circle-xmark"></i>
+        </button>
+      </div>
+    </div>
+  </li>
+</ul>

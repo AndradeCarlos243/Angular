@@ -1,0 +1,37 @@
+<h4>
+  Agregar combatiente
+</h4>
+<form class="row row-cols-1" (ngSubmit)="emitCharacter()">
+  <div class="col">
+    <input
+      class="form-control my1"
+      type="text" name="nombre" id="nombrePersonaje"
+      name="nombre" [ngModelOptions]="{standalone: true}"
+      [(ngModel)]="combatiente.name"
+      placeholder="Nombre del combatiente"
+    >
+  </div>
+
+  <div class="col">
+    <input
+      class="form-control my-1"
+      name="franquicia" [ngModelOptions]="{standalone: true}"
+      type="text" name="franquicia" id="franquiciaPersonaje"
+      [(ngModel)]="combatiente.franchise"
+      placeholder="franquicia"
+    >
+  </div>
+
+  <div class="col">
+    <button
+      (click)="emitCharacter()"
+      class="btn btn-primary mt-2 form-control"
+      type="submit">
+        Agregar
+    </button>
+  </div>
+
+  <div class="col">
+
+  </div>
+</form>
