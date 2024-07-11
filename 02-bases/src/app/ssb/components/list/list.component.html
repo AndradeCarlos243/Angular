@@ -24,7 +24,7 @@
         {{ combatiente.franchise }}</span>
       </div>
       <div class="col text-end">
-        <button class="btn btn-danger" (click)="deleteCharacter(i)" title="Eliminar {{ combatiente.name }}">
+        <button class="btn btn-danger" (click)="onDeleteCharacter(combatiente.id)" title="Eliminar {{ combatiente.name }}">
           <i class="fa-regular fa-circle-xmark"></i>
         </button>
       </div>

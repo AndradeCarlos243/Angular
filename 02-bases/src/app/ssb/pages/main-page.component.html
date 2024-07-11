@@ -3,10 +3,10 @@
 
 <div class="row">
   <div class="col">
-    <ssb-list-combatientes [listaPersonajes]="personajes"></ssb-list-combatientes>
+    <ssb-list-combatientes [listaPersonajes]="personajes" (onDelete)="onDeleteCharacter($event)"></ssb-list-combatientes>
   </div>
 
   <div class="col">
-    <ssb-add-combatiente (onNewCharacter)="onNewCharacter($event)"></ssb-add-combatiente>
+    <ssb-add-combatiente (onNewCharacter)="onAddCharacter($event)"></ssb-add-combatiente>
   </div>
 </div>

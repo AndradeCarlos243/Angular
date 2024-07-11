@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Character } from '../../interfaces/character.interface';
 
 @Component({
@@ -11,7 +11,11 @@ export class ListComponent {
   @Input()
   public listaPersonajes: Character[] = [];
 
-  deleteCharacter(index: number): void {
-    this.listaPersonajes.splice(index, 1);
+  @Output()
+  public onDelete: EventEmitter<string> = new EventEmitter<string>();
+
+  onDeleteCharacter(id: string | undefined): void {
+    if(!id) return console.error('No se ha recibido un id');
+    this.onDelete.emit(id);
   }
 }

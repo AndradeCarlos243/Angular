@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Character } from '../interfaces/character.interface';
+import { SsbService } from '../services/ssb.service';
 
 @Component({
   selector: 'app-ssb-main-page',
@@ -7,27 +8,17 @@ import { Character } from '../interfaces/character.interface';
 })
 
 export class MainPageComponent {
-  public personajes: Character[] = [{
-    name: 'Link',
-    franchise: 'The Legend of Zelda',
-  }, {
-    name: 'Mario',
-    franchise: 'Super Mario Bros',
-  }, {
-    name: 'Donkey Kong',
-    franchise: 'Donkey Kong',
-  }, {
-    name: 'Samus',
-    franchise: 'Metroid',
-  }, {
-    name: 'Yoshi',
-    franchise: 'Super Mario Bros',
-  }, {
-    name: 'Kirby',
-    franchise: 'Kirby',
-  }];
+  constructor( private ssbService: SsbService) { }
 
-  onNewCharacter(personaje: Character): void {
-    this.personajes.push(personaje);
+  get personajes(): Character[] {
+    return [...this.ssbService.personajes];
+  }
+
+  onDeleteCharacter(id: string): void {
+    this.ssbService.deleteCharacterById(id);
+  }
+
+  onAddCharacter(personaje: Character): void {
+    this.ssbService.addCharacter(personaje);
   }
 }
